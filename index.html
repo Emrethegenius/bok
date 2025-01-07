@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Geography Quiz Game</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>    
+<body>
+    <div class="wrapper">
+        <div class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <label for="theme-toggle" class="switch-label">
+                <div class="switch-icons">
+                    <svg class="sun" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 8V5m0 14v-3m4-7h3M5 12h3m.5-4.5l2 2m6 6l2 2m0-10l-2 2m-6 6l-2 2"/>
+                    </svg>
+                    <svg class="moon" viewBox="0 0 24 24">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/>
+                    </svg>
+                </div>
+            </label>
+        </div>
+
+        <section class="hero-container">
+            <div class="hero-content">
+                <h1>DAILY<br>GEO QUIZ</h1>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-line"></div>
+                        <p>Test your geography and general knowledge skills by pinpointing locations on a world map based on unique questions.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-line"></div>
+                        <p>Earn points based on how close your guesses are to the correct locations, with a maximum score of 20,000 across 5 rounds.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-line"></div>
+                        <p>Questions change daily, and all players answer the same set, with final scores and overall accuracy displayed at the end.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-line"></div>
+                        <p>Share your guesses with friends once the game concludes and see how you stack up!</p>
+                    </div>
+                </div>
+                
+                <button id="start-game">
+                    <span>START</span>
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <section id="game-section" style="display: none;">
+            <div id="end-screen" style="display: none;" class="end-screen">
+                <div class="end-content">
+                    <h2>Quiz Complete!</h2>
+                    <div id="final-score"></div>
+                    <div id="final-stats"></div>
+                    <div class="end-buttons">
+                        <button onclick="location.reload()" class="end-button">Play Again</button>
+                        <button onclick="shareResults()" class="end-button">Share Results</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="question-container" class="question-box">
+                <h2 id="question"></h2>
+                <button class="submit-button" id="submit-guess" style="display: none;">Submit Answer</button>
+                <button class="next-button" style="display: none;">Next Question</button>
+            </div>
+
+            <div id="map"></div>
+
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-label">Distance</div>
+                    <div id="distance" class="stat-value">0 km</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Score</div>
+                    <div id="score" class="stat-value">0</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
